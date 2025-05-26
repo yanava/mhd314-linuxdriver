@@ -1,0 +1,47 @@
+# ES9038Q2M Linux Driver
+
+This repository contains the Linux driver for the ES9038Q2M DAC (Digital-to-Analog Converter). The driver is designed to provide seamless integration and high-quality audio output for systems using the ES9038Q2M chip.
+
+## Features
+
+- Support for ES9038Q2M DAC and mahaudio-mhd314 DT Overlay
+- Control programmable filters and mute
+- Playback on ALSA on S16_LE, S24_LE and S32_LE, rates from 8k to 192k
+
+## Installation
+
+1. Clone this repository:
+    ```
+    git clone https://github.com/your-repo/mhd314-linuxdriver.git
+    ```
+2. Navigate to the driver directory:
+    ```
+    cd mhd314-linuxdriver
+    ```
+3. Build the driver:
+    ```
+    make
+    ```
+4. Copy the driver to the Raspberry Pi Linux source file locations:
+    ```
+    cp <driver_file> /path/to/linux/source
+    ```
+5. Build the kernel:
+    ```
+    make -j$(nproc) && sudo make modules_install && sudo make install
+    ```
+    ```
+
+## Usage
+
+Once installed, load the driver by enablind its dtoverlay on config.txt:
+
+dtoverlay=mahaudio-mhd314
+
+## Contributing
+
+Contributions are welcome! Please submit issues or pull requests to help improve the driver.
+
+## License
+
+This project is licensed under the [GNU Lesser General Public License v2.0](https://www.gnu.org/licenses/old-licenses/lgpl-2.0.html).
